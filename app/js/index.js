@@ -5,12 +5,12 @@ import $ from 'jquery';
 import { log, logTitle } from 'logger';
 import { map } from 'bluebird';
 /* your imports */
-import * as Math from './Math';
+import {add, PI} from './Math';
 
 logTitle('Import and Export');
 /* coding examples */
 // callback adalah function di dalam function
 
 
-log(Math.add(2,2));
-log(Math.PI);
+log(add(2,2));
+log(PI);

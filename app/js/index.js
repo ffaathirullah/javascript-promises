@@ -1,23 +1,19 @@
 /* styling */
 require('styles/main.scss');
 /* js */
+
+import $ from 'jquery';
 import { log, logTitle } from 'logger';
 
 /* your imports */
 
-logTitle('Import and Export');
+logTitle('Template Literal');
 /* coding examples */
 // callback adalah function di dalam function
 
-const Person = {};
+const name = "Anna";
+const asal = "Bandung";
+const umur = 19;
 
-Person["name"] = "Maria";
-
-log(Person.name);
-
-const array = [];
-array.push("Maria di Array");
-
-log(array[0]);
-
+log(`Nama ${name.length} asal ${asal} umur ${umur}`);
 

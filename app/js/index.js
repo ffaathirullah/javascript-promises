@@ -9,8 +9,15 @@ logTitle('Import and Export');
 /* coding examples */
 // callback adalah function di dalam function
 
-for(let i=0; i<10; i++){
-    log(i);
-}
+const Person = {};
 
-log(i);
+Person["name"] = "Maria";
+
+log(Person.name);
+
+const array = [];
+array.push("Maria di Array");
+
+log(array[0]);
+
+

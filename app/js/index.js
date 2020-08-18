@@ -7,20 +7,24 @@ import { log, logTitle } from 'logger';
 
 /* your imports */
 
-logTitle('Spread_Array_withObject');
+logTitle('Arrow_Function');
 /* coding examples */
 // callback adalah function di dalam function
 
-const address = {
-    city : "Bandung",
-    country : "Indonesia"
-}
-
-const name = {
-    nama : "Fachrul",
-    umur : 21
-}
-
-const person = {...address, ...name};
-
-log(JSON.stringify(person, null, 2));
+const hello = () => {
+    const es6 = 'ES6';
+    return `Hello ${es6}`;
+  };
+  
+  const powers = [1,2,3,4,5].map((number, index) =>  Math.pow(number, index));
+  
+  
+  const add = (n1, n2) => n1 + n2;
+  
+  const milesToKm = (miles) =>miles * 1.60934;
+  
+  log(hello());
+  log(powers);
+  log(add(100,100));
+  log(milesToKm(500));
+  

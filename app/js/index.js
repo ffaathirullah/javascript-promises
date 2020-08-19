@@ -7,14 +7,40 @@ import { log, logTitle } from 'logger';
 
 /* your imports */
 
-logTitle('Array Destructuring');
+logTitle('Array_Destructuring');
 /* coding examples */
 // callback adalah function di dalam function
 
-const names = ['Anna', 'Mariam', 'Joe', 'Mark', 'Matt'];
-// const anna = names[0];
-// const mariam = names[1];
-// const joe = names[2];
+const getUser = () => {
+    return {
+      name: 'John',
+      surname: 'Doe',
+      gender: 'male',
+      address: {
+        country: 'United States',
+        city: 'California',
+        postCode: 'CA',
+        fullAddress: {
+          doorNumber: 22,
+          street: 'LA st'
+        }
+      },
+      age: 29
+    }
+  };
+  
+  const user = getUser();
+  
+//   const name = user.name;
+//   const age = user.age;
+//   const country = user.address.country;
+//   const doorNumber = user.address.fullAddress.doorNumber;
+  
+const {name, age, address : {country : theCountry }} = user;
+const {address : {fullAddress : {doorNumber : number}}} = user;
 
-const [oke, mariam , joe, ...sisanya] = names;
-log(`${oke} ${mariam} ${joe} ${sisanya}`);
+  log(name);
+  log(age);
+  log(theCountry);
+  log(number);
+  

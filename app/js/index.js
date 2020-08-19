@@ -7,20 +7,24 @@ import { log, logTitle } from 'logger';
 
 /* your imports */
 
-logTitle('Lexical_this');
+logTitle('Enchanced_Object_Properties');
 /* coding examples */
 // callback adalah function di dalam function
 
-const person = {
-    name: 'alex',
-    cars: ['toyota', 'alpha'],
-        toString: function(){
-            // log(`${this.name} has ${this.cars}`)
-            const that = this;
-            this.cars.forEach((car) => {
-                log(`${that.name} has ${car}`)
-            });
-        }
+const pricePropName = "PRICE";
+
+const calculator = (name, price) => {
+    return {
+        name,
+        add(n1, n2){
+            return n1 + n2
+        },
+        [pricePropName.toLowerCase()] : price 
+    }
 }
 
-person.toString();
+const calc = calculator("casio", 19.99);
+
+log(calc.name);
+log(calc.add(20, 20));
+log(calc.price);

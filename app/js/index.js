@@ -7,24 +7,14 @@ import { log, logTitle } from 'logger';
 
 /* your imports */
 
-logTitle('Enchanced_Object_Properties');
+logTitle('Array Destructuring');
 /* coding examples */
 // callback adalah function di dalam function
 
-const pricePropName = "PRICE";
+const names = ['Anna', 'Mariam', 'Joe', 'Mark', 'Matt'];
+// const anna = names[0];
+// const mariam = names[1];
+// const joe = names[2];
 
-const calculator = (name, price) => {
-    return {
-        name,
-        add(n1, n2){
-            return n1 + n2
-        },
-        [pricePropName.toLowerCase()] : price 
-    }
-}
-
-const calc = calculator("casio", 19.99);
-
-log(calc.name);
-log(calc.add(20, 20));
-log(calc.price);
+const [oke, mariam , joe, ...sisanya] = names;
+log(`${oke} ${mariam} ${joe} ${sisanya}`);

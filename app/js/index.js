@@ -7,15 +7,21 @@ import { log, logTitle } from 'logger';
 
 /* your imports */
 
-logTitle('Function_Default_Parameters');
+logTitle('ES6 Class');
 /* coding examples */
 // callback adalah function di dalam function
 
-const calculatePay = (yearSalary , bonus ={
-    teamBonus:0,
-    employeeBonus: 0
-}) => {
-    return yearSalary + bonus.teamBonus + bonus.employeeBonus;
+class Animal {
+    constructor(name, age){
+        log(`${name} is an animal and was created`);
+        this.name = name;
+        this.age = age;
+    }
+
+    logAge() {
+        log(`${this.name} is ${this.age} year old`);
+    }
 }
 
-log(calculatePay(11000, {teamBonus: 10000, employeeBonus:6000}));
+const bobby = new Animal("Fachrul", 2);
+bobby.logAge();

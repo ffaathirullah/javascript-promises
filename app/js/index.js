@@ -7,7 +7,7 @@ import { log, logTitle } from 'logger';
 
 /* your imports */
 
-logTitle('ES6 Class');
+logTitle('inheritance');
 /* coding examples */
 // callback adalah function di dalam function
 
@@ -23,5 +23,19 @@ class Animal {
     }
 }
 
-const bobby = new Animal("Fachrul", 2);
+const bobby = new Animal("usep", 2);
 bobby.logAge();
+
+class Cat extends Animal{
+    constructor(name, age, breed){
+        super(name, age);
+        this.breed = breed; 
+    }
+
+    logAge() {
+        log(`${this.name} is ${this.age} year old`);
+    }
+}
+
+const agus = new Animal("Agus", 2, "oke");
+agus.logAge();

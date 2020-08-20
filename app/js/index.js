@@ -8,46 +8,21 @@ import { resolve } from 'bluebird';
 
 /* your imports */
 
-logTitle('Promise.all');
+logTitle('Promises_Fetch_API');
 /* coding examples */
 // callback adalah function di dalam function
 
-const namesPromise = new Promise((resolve, reject) =>{
-    setTimeout(() => {
-            resolve(["Anna", "Jones", "Ali", "Jake"]);
-        }, 3000);
+const getRandomUsers = n => {
+    const fetchRandomUsers = fetch(`https://randomuser.me/api/?results=${n}`);
+    fetchRandomUsers.then(data => {
+        data.json().then(randomUsers => {
+            log(JSON.stringify(randomUsers.results.length));
+            randomUsers.results.forEach(user =>{
+                const {gender, email} = user;
+                log(`${gender} - ${email}`);
+            })
+        })
+    });
+}
 
-    setTimeout(() => {
-        reject("no data back to the server")
-    }, 5000);
-});
-
-const surnamesPromise = new Promise((resolve, reject) =>{
-    setTimeout(() => {
-            resolve(["Mabrur", "Ucok", "baba", "ali"]);
-        }, 3000);
-
-    setTimeout(() => {
-        reject("no data back to the server")
-    }, 5000);
-});
-
-
-
-// promise.then(response => {
-//     log(response);
-// }).catch(error => {
-//     log(error);
-// });
-
-
-Promise.all([namesPromise, surnamesPromise]).then(data => {
-    const [names, surnames] = data;
-    for (let i = 0; i < names.length; i++) {
-        const name = names[i];
-        const surname = surnames[i];
-        log(`${name} ${surname}`);
-    }
-}).catch(error => {
-    log(error);
-});
+getRandomUsers(10);

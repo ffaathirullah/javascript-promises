@@ -18,24 +18,35 @@ class Animal {
         this.age = age;
     }
 
-    logAge() {
-        log(`${this.name} is ${this.age} year old`);
-    }
-}
-
-const bobby = new Animal("usep", 2);
-bobby.logAge();
-
-class Cat extends Animal{
-    constructor(name, age, breed){
-        super(name, age);
-        this.breed = breed; 
+     //static method tidap perlu instance untuk menng invoke
+     static imStaticMethod() {
+        log("ini static method");
     }
 
     logAge() {
         log(`${this.name} is ${this.age} year old`);
     }
+
+   
+
 }
 
-const agus = new Animal("Agus", 2, "oke");
-agus.logAge();
+Animal.imStaticMethod();
+
+// const bobby = new Animal("usep", 2);
+// bobby.logAge();
+
+// class Cat extends Animal{
+//     constructor(name, age, breed){
+//         super(name, age);
+//         this.breed = breed; 
+//     }
+
+//     logAge() {
+//         log(`${this.name} is ${this.age} year old`);
+//     }
+// }
+
+// const agus = new Animal("Agus", 2, "oke");
+// agus.logAge();
+

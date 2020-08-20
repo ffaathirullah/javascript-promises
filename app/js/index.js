@@ -2,51 +2,52 @@
 require('styles/main.scss');
 /* js */
 
-import $ from 'jquery';
+import $, { data } from 'jquery';
 import { log, logTitle } from 'logger';
+import { resolve } from 'bluebird';
 
 /* your imports */
 
-logTitle('inheritance');
+logTitle('Promise.all');
 /* coding examples */
 // callback adalah function di dalam function
 
-class Animal {
-    constructor(name, age){
-        log(`${name} is an animal and was created`);
-        this.name = name;
-        this.age = age;
+const namesPromise = new Promise((resolve, reject) =>{
+    setTimeout(() => {
+            resolve(["Anna", "Jones", "Ali", "Jake"]);
+        }, 3000);
+
+    setTimeout(() => {
+        reject("no data back to the server")
+    }, 5000);
+});
+
+const surnamesPromise = new Promise((resolve, reject) =>{
+    setTimeout(() => {
+            resolve(["Mabrur", "Ucok", "baba", "ali"]);
+        }, 3000);
+
+    setTimeout(() => {
+        reject("no data back to the server")
+    }, 5000);
+});
+
+
+
+// promise.then(response => {
+//     log(response);
+// }).catch(error => {
+//     log(error);
+// });
+
+
+Promise.all([namesPromise, surnamesPromise]).then(data => {
+    const [names, surnames] = data;
+    for (let i = 0; i < names.length; i++) {
+        const name = names[i];
+        const surname = surnames[i];
+        log(`${name} ${surname}`);
     }
-
-     //static method tidap perlu instance untuk menng invoke
-     static imStaticMethod() {
-        log("ini static method");
-    }
-
-    logAge() {
-        log(`${this.name} is ${this.age} year old`);
-    }
-
-   
-
-}
-
-Animal.imStaticMethod();
-
-// const bobby = new Animal("usep", 2);
-// bobby.logAge();
-
-// class Cat extends Animal{
-//     constructor(name, age, breed){
-//         super(name, age);
-//         this.breed = breed; 
-//     }
-
-//     logAge() {
-//         log(`${this.name} is ${this.age} year old`);
-//     }
-// }
-
-// const agus = new Animal("Agus", 2, "oke");
-// agus.logAge();
-
+}).catch(error => {
+    log(error);
+});
